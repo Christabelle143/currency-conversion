@@ -39,5 +39,6 @@ export function formatTime(date: Date, locale: string): string {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
+    timeZone: 'Africa/Douala',
   }).format(date);
 }
