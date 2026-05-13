@@ -1,0 +1,90 @@
+@use '@/styles/variables' as v;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: 2rem 1.5rem;
+}
+
+.card {
+  max-width: 420px;
+  width: 100%;
+  background: v.$surface;
+  border: 1.5px solid v.$danger-bg;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.iconRow {
+  margin-bottom: 1rem;
+}
+
+.icon {
+  font-size: 2.25rem;
+  filter: grayscale(0);
+  display: inline-block;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: v.$text-primary;
+  margin: 0 0 0.3rem;
+}
+
+.context {
+  font-size: 0.78rem;
+  color: v.$text-muted;
+  margin: 0 0 0.75rem;
+}
+
+.message {
+  font-size: 0.78rem;
+  font-family: v.$font-mono;
+  background: v.$danger-bg;
+  color: v.$danger;
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0 0 1.25rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.retryBtn {
+  padding: 0.6rem 1.25rem;
+  background: v.$primary;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover { background: v.$primary-dark; }
+}
+
+.reloadBtn {
+  padding: 0.6rem 1.25rem;
+  background: transparent;
+  color: v.$text-secondary;
+  border: 1.5px solid v.$border;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover { border-color: v.$primary-light; color: v.$primary; }
+}

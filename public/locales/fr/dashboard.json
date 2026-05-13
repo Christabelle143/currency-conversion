@@ -1,0 +1,12 @@
+{
+  "title": "Taux de Change en Direct",
+  "subtitle": "Devise de base : 1 USD",
+  "currency": "Devise",
+  "rate": "Taux",
+  "change": "Variation",
+  "last_updated": "Dernière mise à jour",
+  "updating": "Mise à jour…",
+  "live": "EN DIRECT",
+  "send_money": "Envoyer de l'Argent",
+  "loading": "Chargement des taux…"
+}

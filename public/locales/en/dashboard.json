@@ -1,0 +1,12 @@
+{
+  "title": "Live Exchange Rates",
+  "subtitle": "Base currency: 1 USD",
+  "currency": "Currency",
+  "rate": "Rate",
+  "change": "Change",
+  "last_updated": "Last updated",
+  "updating": "Updating…",
+  "live": "LIVE",
+  "send_money": "Send Money Now",
+  "loading": "Loading rates…"
+}

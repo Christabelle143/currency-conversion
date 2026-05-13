@@ -1,0 +1,410 @@
+@use '@/styles/variables' as v;
+
+// ── Page layout ────────────────────────────────────────────
+.page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Hero banner ────────────────────────────────────────────
+.hero {
+  background: linear-gradient(135deg, v.$navy 0%, #162032 60%, #1e293b 100%);
+  padding: 3rem 1.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.heroInner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: fit-content;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+}
+
+.liveDotPulse {
+  animation: pulse 0.8s ease-in-out infinite;
+  background: #f59e0b;
+}
+
+.heroTitle {
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.heroSub {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.heroRight {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.updatedLabel {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.38);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+
+.updatedTime {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  font-variant-numeric: tabular-nums;
+  font-family: v.$font-mono;
+}
+
+// ── Body ───────────────────────────────────────────────────
+.body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem 3rem;
+  width: 100%;
+  flex: 1;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3rem;
+  color: v.$text-muted;
+  font-size: 0.9rem;
+}
+
+.loadingSpinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid v.$border;
+  border-top-color: v.$primary;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+// ── Table card ─────────────────────────────────────────────
+.tableCard {
+  background: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead tr {
+    background: v.$bg-subtle;
+  }
+
+  th {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: v.$text-muted;
+    border-bottom: 1px solid v.$border;
+    text-align: left;
+  }
+}
+
+.center { text-align: center; }
+.right  { text-align: right; }
+
+// ── Table rows ─────────────────────────────────────────────
+.row {
+  border-bottom: 1px solid v.$border-light;
+  transition: background 0.12s ease;
+
+  &:last-child { border-bottom: none; }
+  &:hover { background: v.$bg-hover; }
+
+  td {
+    padding: 0.9rem 1.25rem;
+    vertical-align: middle;
+  }
+}
+
+@keyframes flashGreenAnim {
+  0%   { background-color: rgba(5, 150, 105, 0.18); }
+  100% { background-color: transparent; }
+}
+
+@keyframes flashRedAnim {
+  0%   { background-color: rgba(220, 38, 38, 0.15); }
+  100% { background-color: transparent; }
+}
+
+.flashGreen { animation: flashGreenAnim 1.6s ease-out forwards; }
+.flashRed   { animation: flashRedAnim   1.6s ease-out forwards; }
+
+// ── Currency cell ──────────────────────────────────────────
+.currencyCell {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.flag {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.colorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.code {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: v.$text-primary;
+  letter-spacing: 0.01em;
+}
+
+.name {
+  display: block;
+  font-size: 0.75rem;
+  color: v.$text-muted;
+  margin-top: 1px;
+}
+
+// ── Rate cell ──────────────────────────────────────────────
+.rate {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: v.$text-primary;
+  font-variant-numeric: tabular-nums;
+  font-family: v.$font-mono;
+}
+
+.rateCcy {
+  font-size: 0.75rem;
+  color: v.$text-muted;
+  margin-left: 0.25rem;
+}
+
+// ── Direction chip ─────────────────────────────────────────
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.chipUp {
+  background: rgba(5, 150, 105, 0.1);
+  color: v.$success;
+  border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.chipDown {
+  background: rgba(220, 38, 38, 0.08);
+  color: v.$danger;
+  border: 1px solid rgba(220, 38, 38, 0.18);
+}
+
+.chipFlat {
+  background: v.$bg-subtle;
+  color: v.$text-muted;
+  border: 1px solid v.$border;
+}
+
+// ── CTA ────────────────────────────────────────────────────
+.cta {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.75rem;
+  background: v.$primary;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+
+  &:hover {
+    background: v.$primary-dark;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ── Error card ─────────────────────────────────────────────
+.errorCard {
+  background: v.$surface;
+  border: 1.5px solid #fecaca;
+  border-radius: 14px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.errorIcon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.errorMsg {
+  font-size: 0.9rem;
+  color: v.$text-secondary;
+  margin-bottom: 1.25rem;
+}
+
+.retryBtn {
+  padding: 0.6rem 1.5rem;
+  background: v.$primary;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover { background: v.$primary-dark; }
+}
+
+// ── Live dot states ────────────────────────────────────────
+.liveDotError {
+  background: v.$danger !important;
+  animation: none !important;
+}
+
+// ── Skeleton loading ───────────────────────────────────────
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  display: inline-block;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    v.$bg-subtle 25%,
+    #e9eef5 50%,
+    v.$bg-subtle 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeletonFlag {
+  width: 32px;
+  height: 28px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.skeletonCode {
+  width: 42px;
+  height: 14px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.skeletonName {
+  width: 72px;
+  height: 10px;
+  display: block;
+}
+
+.skeletonRate {
+  width: 80px;
+  height: 14px;
+}
+
+.skeletonChip {
+  width: 52px;
+  height: 22px;
+  border-radius: 12px;
+}
+
+// ── Animations ─────────────────────────────────────────────
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
